@@ -47,7 +47,10 @@ const PROJECTS = [
   { t: "Redline", c: "Automotive", d: "0:58", video: base + "videos/reel6.mp4", img: base + "images/thumb6.jpg", r: "aspect-[4/5]" },
   { t: "The Artisan", c: "Documentary", d: "0:42", video: base + "videos/reel3.mp4", img: base + "images/thumb3.jpg", r: "aspect-[9/16]" },
   { t: "Birthday special", c: "Documentary", d: "12:10", video: base + "videos/reel7.mp4", img: base + "images/thumb7.jpg", r: "aspect-square" },
+  { t: "Neon Drift", c: "Automotive", d: "0:45", video: base + "videos/reel9.mp4", img: base + "images/thumb9.jpg", r: "aspect-[9/16]" },
+  { t: "City Lights", c: "Fashion", d: "1:15", video: base + "videos/reel10.mp4", img: base + "images/thumb10.jpg", r: "aspect-[4/3]" },
 ];
+
 const FILTERS = ["All", "Fashion", "Automotive", "Documentary", "Music", "Cars", "Stories"];
 
 /* ───────── SHARED BITS ───────── */
