@@ -370,6 +370,7 @@ function Stats() {
 }
 
 /* ───────── WORK & LIGHTBOX ───────── */
+/* ───────── WORK & LIGHTBOX ───────── */
 function Card({ p }) {
   const ref = useRef(null);
   const videoRef = useRef(null);
@@ -389,16 +390,34 @@ function Card({ p }) {
           const b = ref.current.getBoundingClientRect(); 
           sx.set(Math.min(1, Math.max(0, (e.clientX - b.left) / b.width))); 
         }}>
-        <div ref={ref} className={"relative overflow-hidden rounded-[1.75rem] bg-[#0E0E0E] " + p.r}>
-          <video ref={videoRef} src={p.video + "#t=0.2"} poster={p.img} muted loop playsInline preload="none" className="h-full w-full object-cover transition-transform duration-[700ms] ease-out group-hover:scale-105" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+        <div ref={ref} className={"relative overflow-hidden rounded-[1.75rem] bg-[#1A1A1A] " + p.r}>
+          {/* Removed poster prop, changed preload to "metadata", added #t=0.1 to auto-generate thumbnail */}
+          <video 
+            ref={videoRef} 
+            src={p.video + "#t=0.1"} 
+            muted 
+            loop 
+            playsInline 
+            preload="metadata" 
+            className="h-full w-full object-cover transition-transform duration-[700ms] ease-out group-hover:scale-105" 
+          />
+          
+          {/* Centered Glassmorphism Play Button */}
+          <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+            <div className="grid h-16 w-16 place-items-center rounded-full bg-black/30 backdrop-blur-md border border-white/20 text-white transition-all duration-500 ease-out group-hover:scale-110 group-hover:opacity-0 group-hover:bg-[#FF4D00]">
+              <Play size={24} fill="currentColor" className="ml-1" />
+            </div>
+          </div>
+
+          <div className="absolute inset-0 z-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
           <div className="opacity-0 transition duration-500 group-hover:opacity-100"><Corners c="#fff" inset="m-4" /></div>
           
-          <div className="f-b absolute inset-x-6 bottom-6 translate-y-3 text-xs text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+          <div className="f-b absolute inset-x-6 bottom-6 translate-y-3 z-20 text-xs text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
             <div className="h-[3px] rounded bg-white/30"><motion.i style={{ scaleX: sx }} className="block h-full origin-left rounded bg-[#FF4D00]" /></div>
             <div className="mt-2 flex justify-between"><span>{p.d}</span><span>Tap to Expand</span></div>
           </div>
         </div>
+        
         <div className="mt-4 flex items-start justify-between px-1">
           <div>
             <h3 className="f-d text-2xl font-bold tracking-tight">{p.t}</h3>
